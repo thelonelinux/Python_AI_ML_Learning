@@ -8,8 +8,55 @@
   * pandas : do table arrangements of data
   * sklearn : do linear regression, like making relationship between numbers and stuffs, linear regression, y equals mx plus c things
 
+-------------------------
 
-
-## SOME BASIC KEYWORDS, POINTS TO REMEMBER
+## A. SOME BASIC KEYWORDS, POINTS TO REMEMBER
 * Model : It is the brain model which can predict something. We can create model for like linear regression, log regression
   * there can be large models also, It is just like a simple AI agent doing simple task on its own to predict something.
+
+-------------------------
+
+## B. Tell me about setting up the env in python project
+* For a Python project, "setting up the env" usually means creating an isolated virtual environment and installing the project's dependencies into it.
+* Basic workflow on Windows PowerShell from your project folder:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+* What each step does:
+  * `python -m venv .venv` creates a local virtual environment in `.venv`
+  * `Activate.ps1` switches your shell to use that environment's Python
+  * upgrading `pip` helps avoid old installer issues
+  * `pip install -r requirements.txt` installs the packages your project needs
+
+* Useful checks:
+
+```powershell
+python --version
+where python
+pip list
+```
+
+* If your project does not have a `requirements.txt`, install packages manually:
+
+```powershell
+pip install numpy pandas scikit-learn
+```
+
+* Then save them:
+
+```powershell
+pip freeze > requirements.txt
+```
+
+* A few practical rules:
+  * keep the env inside the project as `.venv`
+  * do not install project packages globally
+  * add `.venv/` to `.gitignore`
+
+
+-------------------------
