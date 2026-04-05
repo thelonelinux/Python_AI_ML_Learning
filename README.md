@@ -60,3 +60,20 @@ pip freeze > requirements.txt
 
 
 -------------------------
+
+## C. MCP in PYTHON, AI, ML
+* https://chatgpt.com/share/69d1fb33-ca58-8323-8dd3-29246efff5a5
+* What is MCP (Model Context Protocol)?
+* Model Context Protocol (MCP) is a standardized way for AI models (like LLMs) to interact with external tools, data sources, and services in a structured and controlled manner.
+* Think of it as:
+  * A bridge/interface layer that allows AI models to safely access external capabilities (APIs, databases, files, tools) with clear rules.
+* Why MCP is Important in AI/ML
+  * Traditional LLMs:
+    * Work only with the data they were trained on
+    * Cannot directly access live systems or tools
+  * With MCP:
+    * Models can query databases
+    * Call external APIs
+    * Execute code/tools
+    * Maintain context across interactions
+
