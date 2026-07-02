@@ -1,5 +1,6 @@
 # LEARNING AND EXPLORING PYTHON, ML AND AI
-* CURRENTLY LEARNING : https://upskill.tutedude.com/course/lecture-genai
+* CURRENTLY LEARNING (Tutedude course): https://upskill.tutedude.com/course/lecture-genai
+  * The notes is added in Tutedude notes folder
 * For very basic starting with all these at once, watch this below 1 hour video
   * https://www.youtube.com/watch?v=JoPWFaS5l-A
 * Python is the language used to build these tools
