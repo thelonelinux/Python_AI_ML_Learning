@@ -1,98 +1,298 @@
-"""Context-manager demonstration: detailed examples and comments.
-
-A context manager is a Python construct that defines setup and cleanup logic
-for a resource. It is usually used with the `with` statement.
-
-The `with` statement ensures that the resource is properly released, even if an
-exception occurs while the resource is in use. Context managers can be implemented
-using a class with `__enter__` and `__exit__`, or by using the `contextlib`
-module with a generator function.
 """
+===========================================================
+            CONTEXT MANAGER IN PYTHON
+===========================================================
+
+Definition
+----------
+A Context Manager is one of the most important Python concepts and is frequently asked in interviews. 
+It is commonly used for resource management (files, database connections, network sockets, locks, etc.).
+
+A Context Manager is an object that automatically manages
+resources by performing setup before a block of code and
+cleanup after the block finishes.
+
+It ensures resources are released properly, even if an
+exception occurs.
+
+Most commonly used with the 'with' statement.
+
+Syntax
+------
+with context_manager as variable:
+    # code
+
+Advantages
+----------
+1. Automatic resource management
+2. No need to manually close resources
+3. Prevents memory/resource leaks
+4. Handles exceptions safely
+5. Cleaner and more readable code
+
+===========================================================
+"""
+
+print("=" * 60)
+print("EXAMPLE 1 : WITHOUT CONTEXT MANAGER")
+print("=" * 60)
+
+"""
+Opening a file manually.
+
+Problem:
+If an exception occurs before file.close(),
+the file may remain open.
+"""
+
+file = open("sample.txt", "w")
+
+file.write("Hello Python\n")
+
+file.close()
+
+print("File Closed Successfully")
+
+print()
+
+# ------------------------------------------------------------
+
+print("=" * 60)
+print("EXAMPLE 2 : USING CONTEXT MANAGER")
+print("=" * 60)
+
+"""
+The 'with' statement automatically closes the file.
+"""
+
+with open("sample.txt", "a") as file:
+    file.write("Learning Context Manager\n")
+    print("Writing into file...")
+
+print("File Closed Automatically")
+
+print()
+
+# ------------------------------------------------------------
+
+print("=" * 60)
+print("EXAMPLE 3 : READING FILE")
+print("=" * 60)
+
+with open("sample.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+print()
+
+# ------------------------------------------------------------
+
+print("=" * 60)
+print("EXAMPLE 4 : WHAT HAPPENS INTERNALLY?")
+print("=" * 60)
+
+"""
+with open(...) as file
+
+Internally behaves like:
+
+manager = open(...)
+
+manager.__enter__()
+
+try:
+    # your code
+
+finally:
+    manager.__exit__()
+
+"""
+
+print("Context Manager internally calls __enter__() and __exit__().")
+
+print()
+
+# ------------------------------------------------------------
+
+print("=" * 60)
+print("EXAMPLE 5 : CREATING OUR OWN CONTEXT MANAGER")
+print("=" * 60)
+
+class Demo:
+
+    def __enter__(self):
+        print("Entering Context")
+        return self
+
+    def display(self):
+        print("Inside Context")
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("Leaving Context")
+
+
+with Demo() as obj:
+    obj.display()
+
+print()
+
+# ------------------------------------------------------------
+
+print("=" * 60)
+print("EXAMPLE 6 : EXCEPTION HANDLING")
+print("=" * 60)
+
+class Test:
+
+    def __enter__(self):
+        print("Start")
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("Cleanup Executed")
+
+        print("Exception Type :", exc_type)
+        print("Exception Value:", exc_value)
+
+        # Returning False means exception will continue propagating.
+        return False
+
+try:
+    with Test():
+        print(10 / 0)
+
+except ZeroDivisionError:
+    print("ZeroDivisionError handled outside")
+
+print()
+
+# ------------------------------------------------------------
+
+print("=" * 60)
+print("EXAMPLE 7 : USING contextlib.contextmanager")
+print("=" * 60)
 
 from contextlib import contextmanager
 
+@contextmanager
+def message():
 
-class FileOpener:
-    """Custom context manager implementing __enter__ and __exit__ methods."""
+    print("Before Yield")
 
-    def __init__(self, filename: str, mode: str = "r"):
-        # Store the file path and mode for later use when entering the block.
-        self.filename = filename
-        self.mode = mode
-        # Initialize the file handle variable; it will hold the opened file.
-        self.file = None
+    yield
+
+    print("After Yield")
+
+
+with message():
+    print("Inside with block")
+
+print()
+
+# ------------------------------------------------------------
+
+print("=" * 60)
+print("EXAMPLE 8 : DATABASE CONNECTION (SIMULATION)")
+print("=" * 60)
+
+class Database:
 
     def __enter__(self):
-        # Open the file when entering the with block.
-        # This is where resource acquisition happens.
-        self.file = open(self.filename, self.mode, encoding="utf-8")
-        # Return the opened file object so it can be used inside the with block.
-        return self.file
+        print("Database Connected")
+        return self
+
+    def execute(self):
+        print("Executing Query")
 
     def __exit__(self, exc_type, exc_value, traceback):
-        # This method runs when exiting the with block, whether an exception occurred
-        # or not. It is responsible for cleaning up the resource.
-        if self.file:
-            self.file.close()
-        # If __exit__ returns True, any exception is suppressed.
-        # Returning False lets exceptions propagate normally.
-        return False
+        print("Database Connection Closed")
 
 
-@contextmanager
-def simple_context(message: str):
-    """Context manager built with a generator using contextlib."""
-    # Code before yield runs on entering the with block.
-    print(f"Entering context with message: {message}")
-    try:
-        # The value yielded here is assigned to the variable after `as`.
-        yield message
-    finally:
-        # Code after yield runs on exit, regardless of success or exception.
-        print(f"Exiting context with message: {message}")
+with Database() as db:
+    db.execute()
+
+print()
+
+# ------------------------------------------------------------
+
+print("=" * 60)
+print("EXAMPLE 9 : LOCK MANAGEMENT (SIMULATION)")
+print("=" * 60)
+
+class Lock:
+
+    def __enter__(self):
+        print("Lock Acquired")
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("Lock Released")
 
 
-def read_write_example():
-    """Example showing a built-in context manager for file I/O."""
-    # open() returns a file object that implements __enter__/__exit__.
-    with open("example.txt", "w", encoding="utf-8") as file_handle:
-        # The file is open inside the with block.
-        file_handle.write("Line one\n")
-        file_handle.write("Line two\n")
-    # The file is automatically closed after the block.
+with Lock():
+    print("Critical Section")
 
-    with open("example.txt", "r", encoding="utf-8") as file_handle:
-        # Read file content while the file is still open.
-        content = file_handle.read()
-    # File handle is closed here.
-    return content
+print()
 
+# ------------------------------------------------------------
 
-def custom_manager_example():
-    """Example using the custom FileOpener context manager."""
-    # FileOpener uses __enter__ and __exit__ behind the scenes.
-    with FileOpener("example.txt", "r") as file_handle:
-        # The opened file object is available as file_handle here.
-        return file_handle.read()
+print("=" * 60)
+print("INTERVIEW NOTES")
+print("=" * 60)
 
+print("""
+What is Context Manager?
+------------------------
+An object that automatically manages resources using
+the with statement.
 
-def generator_context_example():
-    """Example using a generator-based context manager."""
-    with simple_context("demo context") as value:
-        # The yielded value from simple_context is accessible in this block.
-        print("Inside generator-based context, value =", value)
-        return f"Returned from {value}"
+Which methods are required?
+---------------------------
+1. __enter__()
+2. __exit__()
 
+What does __enter__() do?
+-------------------------
+Runs before entering the with block.
+Returns the object assigned after 'as'.
 
-if __name__ == "__main__":
-    # Demonstrate the built-in context manager behavior.
-    file_contents = read_write_example()
-    print("Read from example.txt:\n", file_contents)
+What does __exit__() do?
+------------------------
+Runs after leaving the with block.
+Performs cleanup.
+Receives exception information if one occurred.
 
-    # Demonstrate the custom FileOpener class as context manager.
-    read_back = custom_manager_example()
-    print("Read using custom FileOpener:\n", read_back)
+What does the 'with' statement do?
+----------------------------------
+1. Calls __enter__()
+2. Executes the block
+3. Calls __exit__()
+4. Cleans up resources automatically
 
-    # Demonstrate the generator-based context manager.
-    returned_value = generator_context_example()
-    print(returned_value)
+Can we create our own Context Manager?
+--------------------------------------
+Yes.
+Either:
+1. Implement __enter__() and __exit__()
+OR
+2. Use @contextmanager from contextlib
+
+Common Uses
+-----------
+- File handling
+- Database connections
+- Network sockets
+- Thread locks
+- Temporary resources
+- Transactions
+
+Advantages
+----------
+- Cleaner code
+- Automatic cleanup
+- Better exception handling
+- Prevents resource leaks
+""")
+
+print("=" * 60)
+print("END OF PROGRAM")
+print("=" * 60)

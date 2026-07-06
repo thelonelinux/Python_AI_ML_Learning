@@ -1,0 +1,2 @@
+Hello, file handling!
+This line is appended.

@@ -65,7 +65,11 @@ def advanced_collections_example():
     point = Point(x=3, y=4)
     return counts, grouped, list(queue), point
 
-
+# The following block runs only when this file is executed directly.
+# When you import this module from another script, __name__ is set to
+# the module name (for example, 'classes'), so the code below is skipped.
+# The block runs only when the file is executed directly
+# importing the file does not execute that demonstration code
 if __name__ == "__main__":
     print("List example:", list_example())
     print("Tuple example:", tuple_example())
