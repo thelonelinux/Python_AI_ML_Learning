@@ -42,6 +42,11 @@ class Student(Person):
         return f"{base_greeting} My student ID is {self.student_id}."
 
 
+# The following block runs only when this file is executed directly.
+# When you import this module from another script, __name__ is set to
+# the module name (for example, 'classes'), so the code below is skipped.
+# The block runs only when the file is executed directly
+# importing the file does not execute that demonstration code
 if __name__ == "__main__":
     alice = Person("Alice", 30)
     print(alice.greet())
