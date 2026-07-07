@@ -2,7 +2,7 @@
 
 # Import the greet_person function from file1.py.
 # Python uses the module name without the .py extension.
-from file1 import greet_person
+from Python_Basics_Intermediate_Concepts.file1 import greet_person
 
 
 def main():

@@ -21,3 +21,15 @@
 
 ### IF U WANT TO RUN IN DEBUG MODE
 * py model.py --debug
+
+### USE OF .VENV IN THIS PROJECT
+* `.venv` is the local virtual environment folder for this project.
+* It keeps the Python interpreter and installed packages isolated from the system-wide Python.
+* This means packages installed with `pip install -r requirements.txt` are stored only for this project.
+* Using `.venv` avoids package version conflicts with other projects and makes the setup reproducible.
+* Activate `.venv` before installing dependencies or running the code:
+  * `.\.venv\Scripts\Activate.ps1` on PowerShell
+  * `.\.venv\Scripts\activate.bat` on CMD
+* After activation, install dependencies with:
+  * `py -m pip install -r requirements.txt`
+* Then run project files from the same activated environment.

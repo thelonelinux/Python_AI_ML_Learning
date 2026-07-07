@@ -1,3 +1,9 @@
+# requirements.txt lists Python packages needed by this project.
+# Each line contains one package name, optionally with version specifiers.
+# Use the following command to install all dependencies into your environment:
+#     pip install -r requirements.txt
+# If you are using a virtual environment, activate it first and then run the command.
+
 pandas
 numpy
 seaborn
