@@ -1,5 +1,10 @@
 # TOPICS LEARNING AND UNDERSTANDING
 * Most of these below topics are already present in notes of modules.
+* For interview : learn from below websites
+    * https://www.stackoverflowtips.com/posts/top-50-genai-llm-interview-questions-answers-2025
+
+* FOR BETTER NOTES LEARNING AND INTERVIEW(CHECK THIS)
+    * https://www.geeksforgeeks.org/artificial-intelligence/generative-ai-interview-question-with-answer/
 
 ## A. AI, ML, DL
 Artificial Intelligence (AI) is the broad field of building machines that can perform tasks that usually require human intelligence, such as reasoning, learning, and decision-making.
@@ -194,7 +199,6 @@ The orchestrator may:
 
 
 ## J. Orchestrator vs AI Agent
-
 An orchestrator and an AI agent are related, but they are not the same.
 
 - An orchestrator is the coordinator. It manages the workflow, decides the order of actions, and connects different components like retrievers, tools, memory, and models.
