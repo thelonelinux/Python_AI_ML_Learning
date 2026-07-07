@@ -104,3 +104,25 @@ If the system has a knowledge base containing company documents, the retriever s
 - It finds relevant context from documents
 - Then the LLM uses that context to answer better
 
+
+## G. AI Agents
+
+An AI agent is a system that can understand a goal, take actions, and use tools or external resources to complete a task step by step.
+
+Unlike a simple chatbot that only responds to a prompt, an AI agent can plan, reason, and act. It may use tools such as web search, calculators, databases, or APIs to solve a problem.
+
+### Simple example
+Suppose you ask an AI agent:
+> "Book me a flight to Delhi for next Friday and compare prices."
+
+The agent may:
+1. Search travel websites
+2. Compare available flights
+3. Select the best option
+4. Return the result or even complete the booking
+
+### In short
+- AI agent = an AI system that can act to achieve a goal
+- It uses tools and reasoning
+- It is more than just answering questions
+
