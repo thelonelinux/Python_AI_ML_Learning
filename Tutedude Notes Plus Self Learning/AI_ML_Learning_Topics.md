@@ -272,6 +272,8 @@ This version is arranged in a more sequential learning order, starting from Pyth
 - Module 6 — Not Present
 - Module 11 — No Module in It
 
+-----------------------------------------------------------------------------------------------------------------
+
 ## 10. Brief Explanations of Each Topic
 
 ### Module 4 — Deep Dive in Python
