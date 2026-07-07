@@ -105,8 +105,7 @@ If the system has a knowledge base containing company documents, the retriever s
 - Then the LLM uses that context to answer better
 
 
-## G. AI Agents
-
+## G. AI Agent
 An AI agent is a system that can understand a goal, take actions, and use tools or external resources to complete a task step by step.
 
 Unlike a simple chatbot that only responds to a prompt, an AI agent can plan, reason, and act. It may use tools such as web search, calculators, databases, or APIs to solve a problem.
@@ -123,6 +122,101 @@ The agent may:
 
 ### In short
 - AI agent = an AI system that can act to achieve a goal
-- It uses tools and reasoning
+- It uses tools (MCP Tools, APIs) and reasoning
 - It is more than just answering questions
+
+### What is an AI Agent 
+Agent = LLM + Tools + Loop 
+A standard LLM call is one-shot: input -> output. 
+An Agent is a loop: LLM decides -> call tool -> observe result -> LLM decides again -> ... 
+The LLM acts as the 'brain' — it reasons about WHICH tool to use and WHEN to stop. 
+The loop continues until the LLM decides it has enough information to give a final answer. 
+Key components: LLM (reasoner), Tools (actions), Memory (state), Prompt (instructions). 
+
+Component       : Role  |  Example 
+LLM (brain)     : Decides next action based on observations  |  GPT-4o, LLaMA 3 
+Tools           : Actions the agent can perform  |  web search, calculator, SQL, API call  
+Memory          : Stores conversation + tool results  |  AgentExecutor message history 
+Agent Prompt    : Instructs the LLM how to reason and use tools  |  ReAct template 
+Stop condition  : LLM outputs final answer when done  |  'Final Answer: ...' 
+
+
+
+## H. Retriever vs AI Agent
+
+A retriever and an AI agent both help an LLM work better, but they serve different roles.
+
+A retriever is mainly a search component. Its job is to find the most relevant documents or chunks of information from a knowledge base and send them to the model.
+
+An AI agent is more advanced. It can reason, decide what to do next, use tools, and take actions to complete a task.
+
+### Simple example
+Suppose a user asks:
+> "What is the refund policy for this company?"
+
+- A retriever will search the company documents and fetch the refund policy section.
+- An AI agent may do more: it might search the website, read the policy, compare it with the user's question, and then answer or even help process a refund request.
+
+### In short
+- Retriever = finds relevant information
+- AI Agent = uses that information and can take actions
+
+### Easy comparison
+- Retriever: good for answering questions from documents
+- AI Agent: good for completing tasks step by step
+
+
+## I. Orchestrator in GenAI
+
+An orchestrator in GenAI is the component that coordinates different parts of an AI workflow. It decides which step should happen next, in what order, and which tools or models should be used.
+
+In simple words, the orchestrator acts like a manager or conductor. It helps the system move from one task to another smoothly.
+
+### Why orchestrator is used
+- To connect multiple components such as retriever, LLM, memory, and tools
+- To manage the workflow step by step
+- To make the system more organized and reliable
+
+### Example
+Suppose a user asks:
+> "Summarize the latest company policy and suggest 3 action points."
+
+The orchestrator may:
+1. Send the question to a retriever to fetch the policy document
+2. Pass the retrieved content to an LLM for summarization
+3. Ask the LLM to extract key action points
+4. Return the final answer in a structured format
+
+### In short
+- Orchestrator = the controller of the GenAI workflow
+- It coordinates tools, models, and steps
+- It makes complex AI applications work in a planned way
+
+
+## J. Orchestrator vs AI Agent
+
+An orchestrator and an AI agent are related, but they are not the same.
+
+- An orchestrator is the coordinator. It manages the workflow, decides the order of actions, and connects different components like retrievers, tools, memory, and models.
+- An AI agent is the executor. It uses reasoning and tools to complete a task step by step.
+
+### Simple example
+Suppose a user asks:
+> "Summarize the latest policy and create 3 action points."
+
+- The orchestrator decides the workflow:
+  1. Retrieve the policy document
+  2. Send it to the LLM
+  3. Ask for a summary
+  4. Ask for action points
+- The AI agent then performs the task by reasoning and using tools if needed.
+
+### In short
+- Orchestrator = controls the process
+- AI Agent = performs the task
+
+### Easy difference
+- Orchestrator = manager
+- AI Agent = worker
+
 
