@@ -3,7 +3,7 @@
 * (.venv) PS C:\Users\HP\Desktop\Python_AI_ML_Learning> .\.venv\Scripts\python -m pip install -r requirements.txt
 
 
-## HOW TO SETUP ENV AND RUN THE PROJECT
+## A. HOW TO SETUP ENV AND RUN THE PROJECT
 ### ADD PYTHON
 * (.venv) PS C:\Users\HP\Desktop\Python_AI_ML_Learning> python --version
 * Python 3.14.3
@@ -22,7 +22,11 @@
 ### IF U WANT TO RUN IN DEBUG MODE
 * py model.py --debug
 
-### USE OF .VENV IN THIS PROJECT
+
+
+
+
+## B. USE OF .VENV IN THIS PROJECT
 * `.venv` is the local virtual environment folder for this project.
 * It keeps the Python interpreter and installed packages isolated from the system-wide Python.
 * This means packages installed with `pip install -r requirements.txt` are stored only for this project.
