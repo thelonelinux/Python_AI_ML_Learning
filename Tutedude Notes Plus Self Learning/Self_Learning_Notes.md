@@ -226,3 +226,131 @@ Suppose a user asks:
 - AI Agent = worker
 
 
+## K. Finder in GenAI
+Short answer: a "finder" in generative AI is the component that locates relevant knowledge (documents, passages, data) to provide context to a model — essentially a retriever used in retrieval-augmented generation (RAG).
+
+- **Purpose:** Supplies the LLM with factual context so outputs are accurate and grounded.  
+- **How it works:** Accepts a query → scores/candidates documents → returns top results (passages or metadata).  
+- **Common approaches:** **Keyword/BM25** search, **embedding + vector search** (semantic), or hybrid (BM25 + embeddings).  
+- **Where it sits:** Upstream of the LLM in RAG pipelines; often called a `retriever`, `finder`, or `search` module.  
+- **Typical tech:** vector DBs and services like Pinecone, Milvus, Weaviate, FAISS, or search engines like Elasticsearch.  
+- **Best practices:** chunk long docs, store metadata, use embeddings tuned to domain, add filters (time/author), and validate retrieved results before generation.
+
+If you meant a specific product or library named "Finder", tell me which one and I’ll give targeted details and a code example.
+
+
+## L. UV vs PIP
+* UV vs PIP – Short Notes (Python Interview Revision)**
+### What is `pip`?
+* `pip` stands for **Pip Installs Packages**.
+* It is Python's **default package manager**.
+* Used to install, upgrade, uninstall, and manage Python packages from **PyPI (Python Package Index)**.
+* Works with `requirements.txt` for dependency management.
+
+**Common Commands**
+```bash
+pip install package_name
+pip uninstall package_name
+pip list
+pip freeze > requirements.txt
+pip install -r requirements.txt
+```
+
+### What is `uv`?
+* `uv` is a **modern, high-performance Python package and project manager**.
+* Developed by **Astral** (the creators of Ruff).
+* Written in **Rust**, making it significantly faster than `pip`.
+* Can manage:
+  * Python packages
+  * Virtual environments
+  * Project dependencies
+  * Python versions
+
+**Common Commands**
+```bash
+uv init
+uv add requests
+uv remove requests
+uv sync
+uv run app.py
+uv venv
+```
+
+
+### Difference Between `pip` and `uv`
+
+| Feature                   | `pip`                    | `uv`                         |
+| ------------------------- | ------------------------ | ---------------------------- |
+| Developed By              | PyPA                     | Astral                       |
+| Language                  | Python                   | Rust                         |
+| Speed                     | Slower                   | Very Fast                    |
+| Virtual Environment       | Uses `venv` separately   | Built-in (`uv venv`)         |
+| Dependency Management     | `requirements.txt`       | `pyproject.toml` + `uv.lock` |
+| Python Version Management | ❌ No                     | ✅ Yes                        |
+| Project Management        | Limited                  | Yes                          |
+| Best For                  | Existing/legacy projects | New modern projects          |
+
+---
+
+### Advantages of `pip`
+
+* Official Python package manager.
+* Stable and widely supported.
+* Works with almost every Python project.
+* Large community support.
+
+---
+
+### Advantages of `uv`
+
+* Much faster package installation.
+* Faster dependency resolution.
+* Built-in virtual environment management.
+* Lock files (`uv.lock`) for reproducible builds.
+* Can manage Python installations and project dependencies.
+
+---
+
+### When to Use
+
+#### Use `pip` when:
+
+* Working on existing projects.
+* Using `requirements.txt`.
+* Maximum compatibility is required.
+
+#### Use `uv` when:
+
+* Starting a new Python project.
+* Faster package installation is important.
+* You want modern dependency and environment management.
+
+---
+
+### Interview Questions
+
+### Q1. What is `pip`?
+
+**Answer:** `pip` is Python's default package manager used to install and manage Python packages from PyPI.
+
+### Q2. What is `uv`?
+
+**Answer:** `uv` is a fast Python package and project manager written in Rust that manages packages, virtual environments, dependencies, and Python versions.
+
+### Q3. Why is `uv` faster than `pip`?
+
+**Answer:** Because `uv` is written in **Rust** and uses optimized dependency resolution and caching.
+
+### Q4. Can `uv` replace `pip`?
+
+**Answer:** Yes, for many modern Python workflows, `uv` can replace `pip` while also providing additional features like virtual environment and project management.
+
+---
+
+#### One-Line Revision
+
+* **`pip`** → Traditional Python package manager.
+* **`uv`** → Modern, Rust-based, high-speed package and project manager.
+
+
+
