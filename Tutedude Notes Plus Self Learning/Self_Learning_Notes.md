@@ -2,6 +2,8 @@
 * Most of these below topics are already present in notes of modules.
 * For interview : learn from below websites
     * https://www.stackoverflowtips.com/posts/top-50-genai-llm-interview-questions-answers-2025
+    * https://www.datacamp.com/blog/genai-interview-questions
+    * https://credmark.ai/practice/top-transformer-based-models-interview-questions-and-answers
 
 * FOR BETTER NOTES LEARNING AND INTERVIEW(CHECK THIS)
     * https://www.geeksforgeeks.org/artificial-intelligence/generative-ai-interview-question-with-answer/
@@ -67,7 +69,7 @@ Transformers process the whole input at once using attention mechanisms. This al
 
 
 ## E. Langchain for Generative AI
-LangChain in one sentence 
+LangChain in one sentence : It is a python (javascript) framework.
 LangChain is the glue layer between your application and the LLM, 
 providing modular, composable components for prompts, models, memory, 
 retrieval, chains, and agents — so you build products, not boilerplate. 
