@@ -74,7 +74,7 @@ LangChain is the glue layer between your application and the LLM,
 providing modular, composable components for prompts, models, memory, 
 retrieval, chains, and agents — so you build products, not boilerplate. 
 
-LangChain Ecosystem Overview 
+LangChain Ecosystem : Overview 
 Package             : Purpose 
 langchain           : Core abstractions: chains, memory, agents, retrievers 
 langchain-openai    : OpenAI-specific integrations (ChatOpenAI, OpenAIEmbeddings) 
@@ -352,5 +352,6 @@ uv venv
 * **`pip`** → Traditional Python package manager.
 * **`uv`** → Modern, Rust-based, high-speed package and project manager.
 
-
+## M. Skills In Agentic AI
+In Agentic AI, a skill is a reusable capability that enables an AI agent to perform specific tasks beyond text generation, such as searching documents, calling APIs, querying databases, executing code, or sending emails. The agent selects the appropriate skill based on the user's request, executes it, and uses the returned result to generate an accurate and actionable response.
 
